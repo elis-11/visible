@@ -1,0 +1,29 @@
+[
+    {
+        "_id": "f1",
+        "category": "WHITEINJELLY",
+        "name": "WHITEINJELLY",
+        "price": 95,
+        "year": 2022,
+        "new": true,
+        "image": "https://source.unsplash.com/150x150/?watch,WHITEINJELLY"
+    },
+    {
+        "_id": "f2",
+        "category": "MEDUSA ",
+        "name": "MEDUSA INFINITE",
+        "price": 1989,
+        "year": 2020,
+        "new": true,
+        "image": "https://source.unsplash.com/150x150/?watch,MEDUSA_INFINITE"
+    },
+    {
+        "_id": "f3",
+        "category": "Smartwatch",
+        "name": "APPLE SE GPS",
+        "price": 299,
+        "year": 2021,
+        "new": true,
+        "image": "https://source.unsplash.com/150x150/?WATCH,APPLE_WATCH_SE_GPS_40MM"
+    }
+]

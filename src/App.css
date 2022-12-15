@@ -4,3 +4,16 @@
   padding: 2rem;
   text-align: center;
 }
+.App{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.watches{
+  display: flex;
+  justify-content: space-around;
+}
+.watch{
+  margin: 1rem;
+  border: 1px solid grey;
+}
