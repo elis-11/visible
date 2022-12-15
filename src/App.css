@@ -1,5 +1,5 @@
 #root {
-  max-width: 1280px;
+  width: 80%;
   margin: 0 auto;
   padding: 2rem;
   text-align: center;
@@ -11,9 +11,16 @@
 }
 .watches{
   display: flex;
-  justify-content: space-around;
+  flex-direction: column;
+  justify-content: center;
 }
 .watch{
-  margin: 1rem;
+  display: flex;
+  margin: .5rem;
+  width: 100%;
   border: 1px solid grey;
+}
+.data{
+  margin-left: 2rem;
+  font-size: 1.2rem;
 }
