@@ -1,46 +1,26 @@
 import { useState } from "react";
-import watchesJson from "./data/watches.json";
 import "./App.css";
 
 function App() {
-  const [watches, setWatches] = useState(watchesJson);
-  const [priceMin, setPriceMin] = useState(0);
-  const [priceMax, setPriceMax] = useState(0);
-
-  let filteredWatches = watches;
-  if (priceMin) {
-    filteredWatches = filteredWatches.filter((watch) => {
-      return watch.price >= priceMin;
-    });
-  }
+  const [number, setNumber] = useState(0)
 
   return (
     <div className="App">
       <h1>Watches App</h1>
       <div className="input_feld">
         <div className="price_min">
-          <label>Price Min: </label>
+          <label>Number: </label>
           <input
             type="number"
-            value={priceMin}
-            onChange={(e) => {
-              setPriceMin(e.target.value);
-            }}
+            value={number}
+            onChange={e=>setNumber(e.target.value)}
           />
-          {priceMin >= 10 && <button>button</button>}
+          {number >=10 && 
+          <button>button</button>
+          }
         </div>
       </div>
 
-      <div className="watches">
-        {filteredWatches.map((watch) => (
-          <div key={watch._id} className="watch">
-            <img src={watch.image} alt={watch.name} />
-            <div className="name">{watch.name}</div>
-            <div className="name">{watch.year} year</div>
-            <div className="name">price: {watch.price} €</div>
-          </div>
-        ))}
-      </div>
     </div>
   );
 }
