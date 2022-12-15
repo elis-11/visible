@@ -23,14 +23,16 @@ function App() {
           <input
             type="number"
             value={priceMin}
-            onChange={(e) => setPriceMin(e.target.value)}
+            onChange={(e) => {
+              setPriceMin(e.target.value);
+            }}
           />
+          {priceMin >= 10 && <button>button</button>}
         </div>
-        {priceMin >= 10 && <button>button</button>}
       </div>
 
       <div className="watches">
-        {watchesJson.map((watch) => (
+        {filteredWatches.map((watch) => (
           <div key={watch._id} className="watch">
             <img src={watch.image} alt={watch.name} />
             <div className="name">{watch.name}</div>
