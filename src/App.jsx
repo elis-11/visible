@@ -4,7 +4,6 @@ import "./App.css";
 
 function App() {
   const [watches, setWatches] = useState(watchesJson);
-  const [number, setNumber] = useState("");
 
   const onQuantityChange = (id, quantityNew) => {
     const updateWatches = watches.map((watch) =>
@@ -30,10 +29,16 @@ function App() {
             <img src={watch.image} alt={watch.name} />
             <div className="data">
               <div className="name">{watch.name}</div>
-              <div className="price">price: {watch.price} €</div>
-              <div className="total">
-                price for {watch.quantity} watches:
-                {/* {priceForQuantityWatches} € */}
+
+              <div className="item_price">
+                <div className="watch_price">price: {watch.price} €</div>
+                {watch.quantity > 0 && (
+                  <div className="count_price">
+                    price for {watch.quantity}{" "}
+                    {watch.quantity == 1 ? "watch" : "watches"}:{" "}
+                    {`${watch.price * watch.quantity}`} €
+                  </div>
+                )}
               </div>
               <div className="input">
                 <input
@@ -48,14 +53,17 @@ function App() {
           </div>
         ))}
       </div>
+      {/* TOTAL PRICE */}
       <div className="input_feld">
         <div className="price_min">
           <h3>Minimum order value: 100 € </h3>
-          <h3>
-            Total price: 
-            {/* for {totalQuantity} watches */}
-          {" "}   {totalPrice} €
-          </h3>
+          {totalPrice > 0 && (
+            <h3>
+              Total price:
+              {/* for {totalQuantity} watches */} {totalPrice} €
+            </h3>
+          )}
+
           {totalPrice >= 100 && <button>Checkout</button>}
         </div>
       </div>

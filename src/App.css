@@ -17,10 +17,25 @@
 .watch{
   display: flex;
   margin: .5rem;
-  width: 100%;
   border: 1px solid grey;
 }
 .data{
-  margin-left: 2rem;
+  display: flex;
+  flex-direction: column;
+  /* justify-content: start; */
+  place-items: start;
+  margin: 2rem;
   font-size: 1.2rem;
+}
+.item_price{
+  display: flex;
+  justify-content: space-evenly;
+  margin: 1em 0;
+  /* border: 1px solid red; */
+}
+.watch_price{
+  margin-right: 2rem;
+}
+.count_price{
+  margin-left: 2rem;
 }
