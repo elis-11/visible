@@ -34,9 +34,9 @@ function App() {
                 <div className="watch_price">price: {watch.price} €</div>
                 {watch.quantity > 0 && (
                   <div className="count_price">
-                    price for {watch.quantity}{" "}
+                   {" "} 🛒 {" "}  {watch.quantity}{" "}
                     {watch.quantity == 1 ? "watch" : "watches"}:{" "}
-                    {`${watch.price * watch.quantity}`} €
+                    {`${watch.price * watch.quantity}`} € 
                   </div>
                 )}
               </div>
