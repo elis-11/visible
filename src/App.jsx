@@ -1,9 +1,20 @@
-import { useState } from "react";
-import watchesJson from "./data/watches.json";
+import { useEffect, useState } from "react";
+// import watchesJson from "./data/watches.json";
 import "./App.css";
 
 function App() {
-  const [watches, setWatches] = useState(watchesJson);
+  // const [watches, setWatches] = useState(watchesJson);
+  const [watches, setWatches] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
+
+  useEffect(() => {
+    fetch("https://639102970bf398c73a98b8ea.mockapi.io/watches")
+      .then((response) => response.json())
+      .then((json) => {
+        setWatches(json);
+        setIsLoading(false);
+      });
+  }, []);
 
   const onQuantityChange = (id, quantityNew) => {
     const updateWatches = watches.map((watch) =>
@@ -23,6 +34,7 @@ function App() {
   return (
     <div className="App">
       <h1>Watches App</h1>
+      {isLoading && "Loading..."}
       <div className="watches">
         {watches.map((watch) => (
           <div key={watch._id} className="watch">
@@ -58,12 +70,8 @@ function App() {
       <div className="input_feld">
         <div className="price_min">
           <h3>Minimum order value: 100 € </h3>
-          {totalPrice > 0 && (
-            <h3>
-              Total price:
-              {/* for {totalQuantity} watches */} {totalPrice} €
-            </h3>
-          )}
+          <h3>Total quantity: {totalQuantity}</h3>
+          {totalPrice > 0 && <h3>Total price: {totalPrice} €</h3>}
 
           {totalPrice >= 100 && <button>Checkout</button>}
         </div>
