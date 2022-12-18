@@ -9,6 +9,7 @@ function App() {
   const [watchName, setWatchName] = useState("");
   const [priceMin, setPriceMin] = useState("");
   const [priceMax, setPriceMax] = useState("");
+  const [filteredNames, setFilteredNames] = useState([]);
 
   useEffect(() => {
     fetch("https://639102970bf398c73a98b8ea.mockapi.io/watches")
@@ -26,6 +27,7 @@ function App() {
     setWatches(updateWatches);
   };
 
+  // INPUTS
   let filteredWatches = watches;
   if (watchName) {
     filteredWatches = filteredWatches.filter((watch) =>
@@ -43,6 +45,24 @@ function App() {
     });
   }
 
+  // CHECKBOX
+  const onCheckboxSelect = (e) => {
+    if (e.target.checked) {
+      setFilteredNames([...filteredNames, e.target.value]);
+    } else {
+      const newFilteredNames = filteredNames.filter((watch) => {
+        return watch !== e.target.value;
+      });
+      setFilteredNames(newFilteredNames);
+    }
+  };
+  if (filteredNames.length){
+    filteredWatches = filteredWatches.filter((watch) => {
+      return filteredNames.includes(watch.category)
+    })
+  }
+
+  // CARTS
   const totalPrice = watches.reduce((total, watch) => {
     return total + watch.price * watch.quantity;
   }, 0);
@@ -55,32 +75,53 @@ function App() {
     <div className="App">
       <h1>Watches App</h1>
       {isLoading && "Loading..."}
+      <div className="filter">
+        <div className="inputs">
+          <h2>Inputs:</h2>
+          <div className="filterName">
+            <label>Watch Name:</label>
+            <input
+              type="text"
+              value={watchName}
+              onChange={(e) => setWatchName(e.target.value)}
+            />
+          </div>
+          <div className="priceMin">
+            <label>Price Min:</label>
+            <input
+              type="number"
+              value={priceMin}
+              onChange={(e) => setPriceMin(e.target.value)}
+            />
+          </div>
+          <div className="priceMax">
+            <label>Price Max: </label>
+            <input
+              type="number"
+              value={priceMax}
+              onChange={(e) => setPriceMax(e.target.value)}
+            />
+          </div>
+        </div>
 
-      <div className="inputs">
-        <h2>Inputs:</h2>
-        <div className="filterName">
-          <label>Watch Name:</label>
-          <input
-            type="text"
-            value={watchName}
-            onChange={(e) => setWatchName(e.target.value)}
-          />
-        </div>
-        <div className="priceMin">
-          <label>Price Min:</label>
-          <input
-            type="number"
-            value={priceMin}
-            onChange={(e) => setPriceMin(e.target.value)}
-          />
-        </div>
-        <div className="priceMax">
-          <label>Price Max: </label>
-          <input
-            type="number"
-            value={priceMax}
-            onChange={(e) => setPriceMax(e.target.value)}
-          />
+        <div className="filteredNames">
+          <h2>Checkboxes:</h2>
+          <div className="whiteinjelly">
+            <input
+              type="checkbox"
+              value="WHITEINJELLY"
+              onChange={onCheckboxSelect}
+            />
+            <label>WHITEINJELLY</label>
+          </div>
+          <div className="medusa">
+            <input type="checkbox" value="MEDUSA" onChange={onCheckboxSelect} />
+            <label>MEDUSA</label>
+          </div>
+          <div className="apple">
+            <input type="checkbox" value="APPLE" onChange={onCheckboxSelect} />
+            <label>APPLE</label>
+          </div>
         </div>
       </div>
 

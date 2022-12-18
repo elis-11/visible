@@ -9,6 +9,10 @@
   flex-direction: column;
   justify-content: center;
 }
+.filter{
+  display: flex;
+  justify-content: space-between;
+}
 .watches{
   display: flex;
   flex-direction: column;

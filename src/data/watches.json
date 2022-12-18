@@ -10,7 +10,7 @@
     },
     {
         "_id": "w2",
-        "category": "MEDUSA ",
+        "category": "MEDUSA",
         "name": "MEDUSA INFINITE",
         "price": 989,
         "year": 2020,
@@ -19,7 +19,7 @@
     },
     {
         "_id": "w3",
-        "category": "Smartwatch",
+        "category": "APPLE",
         "name": "APPLE SE GPS",
         "price": 299,
         "year": 2021,
