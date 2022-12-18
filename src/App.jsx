@@ -6,6 +6,9 @@ function App() {
   // const [watches, setWatches] = useState(watchesJson);
   const [watches, setWatches] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
+  const [watchName, setWatchName] = useState("");
+  const [priceMin, setPriceMin] = useState("");
+  const [priceMax, setPriceMax] = useState("");
 
   useEffect(() => {
     fetch("https://639102970bf398c73a98b8ea.mockapi.io/watches")
@@ -23,6 +26,23 @@ function App() {
     setWatches(updateWatches);
   };
 
+  let filteredWatches = watches;
+  if (watchName) {
+    filteredWatches = filteredWatches.filter((watch) =>
+      watch.name.toLowerCase().includes(watchName.toLowerCase())
+    );
+  }
+  if (priceMin) {
+    filteredWatches = filteredWatches.filter((watch) => {
+      return watch.price >= priceMin;
+    });
+  }
+  if (priceMax) {
+    filteredWatches = filteredWatches.filter((watch) => {
+      return watch.price <= priceMax;
+    });
+  }
+
   const totalPrice = watches.reduce((total, watch) => {
     return total + watch.price * watch.quantity;
   }, 0);
@@ -35,8 +55,37 @@ function App() {
     <div className="App">
       <h1>Watches App</h1>
       {isLoading && "Loading..."}
+
+      <div className="inputs">
+        <h2>Inputs:</h2>
+        <div className="filterName">
+          <label>Watch Name:</label>
+          <input
+            type="text"
+            value={watchName}
+            onChange={(e) => setWatchName(e.target.value)}
+          />
+        </div>
+        <div className="priceMin">
+          <label>Price Min:</label>
+          <input
+            type="number"
+            value={priceMin}
+            onChange={(e) => setPriceMin(e.target.value)}
+          />
+        </div>
+        <div className="priceMax">
+          <label>Price Max: </label>
+          <input
+            type="number"
+            value={priceMax}
+            onChange={(e) => setPriceMax(e.target.value)}
+          />
+        </div>
+      </div>
+
       <div className="watches">
-        {watches.map((watch) => (
+        {filteredWatches.map((watch) => (
           <div key={watch._id} className="watch">
             <img src={watch.image} alt={watch.name} />
             <div className="data">
