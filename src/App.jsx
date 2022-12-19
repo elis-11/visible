@@ -45,7 +45,7 @@ function App() {
     });
   }
 
-  // CHECKBOX
+  // CHECKBOX -ALL
   const onCheckboxSelect = (e) => {
     if (e.target.checked) {
       setFilteredNames([...filteredNames, e.target.value]);
@@ -109,23 +109,24 @@ console.log(watches)
           <h2>Checkboxes:</h2>
           <div className="whiteinjelly">
             <input
-              type="radio"
-              name="category"
+              type="checkbox"
+              name="WHITEINJELLY"
               value="WHITEINJELLY"
               onChange={onCheckboxSelect}
             />
             <label>WHITEINJELLY</label>
           </div>
           <div className="medusa">
-            <input type="radio" name="category" value="MEDUSA" onChange={onCheckboxSelect} />
+            <input type="checkbox" name="MEDUSA" value="MEDUSA" onChange={onCheckboxSelect} />
             <label>MEDUSA</label>
           </div>
           <div className="apple">
-            <input type="radio" name="category" value="APPLE" onChange={onCheckboxSelect} />
+            <input type="checkbox" name="APPLE" value="APPLE" onChange={onCheckboxSelect} />
             <label>APPLE</label>
           </div>
         </div>
       </div>
+
 
       <div className="watches">
         {filteredWatches.map((watch) => (
