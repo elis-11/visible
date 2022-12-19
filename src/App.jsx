@@ -7,8 +7,8 @@ function App() {
   const [watches, setWatches] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [watchName, setWatchName] = useState("");
-  const [priceMin, setPriceMin] = useState("");
-  const [priceMax, setPriceMax] = useState("");
+  const [priceMin, setPriceMin] = useState(0);
+  const [priceMax, setPriceMax] = useState(0);
   const [filteredNames, setFilteredNames] = useState([]);
 
   useEffect(() => {
@@ -22,7 +22,7 @@ function App() {
 
   const onQuantityChange = (id, quantityNew) => {
     const updateWatches = watches.map((watch) =>
-      watch._id === id ? { ...watch, quantity: quantityNew } : watch
+      watch._id === id ? { ...watch, quantity: Number(quantityNew) } : watch
     );
     setWatches(updateWatches);
   };
@@ -70,6 +70,7 @@ function App() {
   const totalQuantity = watches.reduce((total, watch) => {
     return total + watch.quantity;
   }, 0);
+console.log(watches) 
 
   return (
     <div className="App">
@@ -108,18 +109,19 @@ function App() {
           <h2>Checkboxes:</h2>
           <div className="whiteinjelly">
             <input
-              type="checkbox"
+              type="radio"
+              name="category"
               value="WHITEINJELLY"
               onChange={onCheckboxSelect}
             />
             <label>WHITEINJELLY</label>
           </div>
           <div className="medusa">
-            <input type="checkbox" value="MEDUSA" onChange={onCheckboxSelect} />
+            <input type="radio" name="category" value="MEDUSA" onChange={onCheckboxSelect} />
             <label>MEDUSA</label>
           </div>
           <div className="apple">
-            <input type="checkbox" value="APPLE" onChange={onCheckboxSelect} />
+            <input type="radio" name="category" value="APPLE" onChange={onCheckboxSelect} />
             <label>APPLE</label>
           </div>
         </div>
