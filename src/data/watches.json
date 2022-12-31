@@ -25,5 +25,33 @@
         "year": 2021,
         "quantity": 0,
         "image": "https://source.unsplash.com/150x150/?WATCH,APPLE_WATCH_SE_GPS_40MM"
+    },
+    {
+        "_id": "w4",
+        "category": "WHITEINJELLY",
+        "name": "WHITEINJELLY GNK",
+        "price": 45,
+        "year": 2022,
+        "quantity": 0,
+        "image": "https://source.unsplash.com/150x150/?watch,WHITEINJELLY"
+    },
+    {
+        "_id": "w5",
+        "category": "MEDUSA",
+        "name": "MEDUSA GOR",
+        "price": 479,
+        "year": 2020,
+        "quantity": 0,
+        "image": "https://source.unsplash.com/150x150/?watch,MEDUSA_INFINITE"
+    },
+    {
+        "_id": "w6",
+        "category": "APPLE",
+        "name": "APPLE INFINITE",
+        "price": 99,
+        "year": 2021,
+        "quantity": 0,
+        "image": "https://source.unsplash.com/150x150/?WATCH,APPLE_WATCH_SE_GPS_40MM"
     }
+
 ]

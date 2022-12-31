@@ -56,9 +56,14 @@ function App() {
       setFilteredNames(newFilteredNames);
     }
   };
+  // if (filteredNames){
+  //   filteredWatches = filteredWatches.filter((watch) => {
+  //     return watch.name.includes(filteredNames)
+  //   })
+  // }
   if (filteredNames.length){
-    filteredWatches = filteredWatches.filter((watch) => {
-      return filteredNames.includes(watch.category)
+      filteredWatches = filteredWatches.filter((watch) => {
+    return filteredNames.includes(watch.category)
     })
   }
 
@@ -126,7 +131,19 @@ console.log(watches)
           </div>
         </div>
       </div>
+      
+      {/* TOTAL PRICE */}
+      <div className="input_feld">
+        <div className="price_min">
+          <h3>Minimum order value: 100 € </h3>
+          <h3>Total quantity: {totalQuantity}</h3>
+          {totalPrice > 0 && <h3>Total price: {totalPrice} €</h3>}
 
+          {totalPrice >= 100 && <button>Checkout</button>}
+        </div>
+      </div>
+
+        {/* WATCHES */}
 
       <div className="watches">
         {filteredWatches.map((watch) => (
@@ -158,16 +175,6 @@ console.log(watches)
             </div>
           </div>
         ))}
-      </div>
-      {/* TOTAL PRICE */}
-      <div className="input_feld">
-        <div className="price_min">
-          <h3>Minimum order value: 100 € </h3>
-          <h3>Total quantity: {totalQuantity}</h3>
-          {totalPrice > 0 && <h3>Total price: {totalPrice} €</h3>}
-
-          {totalPrice >= 100 && <button>Checkout</button>}
-        </div>
       </div>
     </div>
   );
