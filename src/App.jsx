@@ -5,7 +5,7 @@ import "./App.css";
 function App() {
   // const [watches, setWatches] = useState(watchesJson);
   const [watches, setWatches] = useState([]);
-  const [isLoading, setIsLoading] = useState(true);
+  const [isLoading, setIsLoading] = useState(true); // LOADING
   const [watchName, setWatchName] = useState("");
   const [priceMin, setPriceMin] = useState(0);
   const [priceMax, setPriceMax] = useState(0);
@@ -16,7 +16,7 @@ function App() {
       .then((response) => response.json())
       .then((json) => {
         setWatches(json);
-        setIsLoading(false);
+        setIsLoading(false);  // LOADING
       });
   }, []);
 
@@ -75,7 +75,7 @@ console.log(watches)
   return (
     <div className="App">
       <h1>Watches App</h1>
-      {isLoading && "Loading..."}
+      {isLoading && "Loading..."} 
       <div className="filter">
         <div className="inputs">
           <h2>Inputs:</h2>
