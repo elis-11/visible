@@ -16,7 +16,7 @@ function App() {
       .then((response) => response.json())
       .then((json) => {
         setWatches(json);
-        setIsLoading(false);  // LOADING
+        setIsLoading(false); // LOADING
       });
   }, []);
 
@@ -61,10 +61,10 @@ function App() {
   //     return watch.name.includes(filteredNames)
   //   })
   // }
-  if (filteredNames.length){
-      filteredWatches = filteredWatches.filter((watch) => {
-    return filteredNames.includes(watch.category)
-    })
+  if (filteredNames.length) {
+    filteredWatches = filteredWatches.filter((watch) => {
+      return filteredNames.includes(watch.category);
+    });
   }
 
   // CARTS
@@ -75,12 +75,13 @@ function App() {
   const totalQuantity = watches.reduce((total, watch) => {
     return total + watch.quantity;
   }, 0);
-console.log(watches) 
+  console.log(watches);
 
   return (
     <div className="App">
       <h1>Watches App</h1>
-      {isLoading && "Loading..."} 
+      {isLoading && "Loading..."}
+      {/* INPUTS */}
       <div className="filter">
         <div className="inputs">
           <h2>Inputs:</h2>
@@ -109,7 +110,7 @@ console.log(watches)
             />
           </div>
         </div>
-
+        {/* CHECKBOXES */}
         <div className="filteredNames">
           <h2>Checkboxes:</h2>
           <div className="whiteinjelly">
@@ -122,16 +123,26 @@ console.log(watches)
             <label>WHITEINJELLY</label>
           </div>
           <div className="medusa">
-            <input type="checkbox" name="MEDUSA" value="MEDUSA" onChange={onCheckboxSelect} />
+            <input
+              type="checkbox"
+              name="MEDUSA"
+              value="MEDUSA"
+              onChange={onCheckboxSelect}
+            />
             <label>MEDUSA</label>
           </div>
           <div className="apple">
-            <input type="checkbox" name="APPLE" value="APPLE" onChange={onCheckboxSelect} />
+            <input
+              type="checkbox"
+              name="APPLE"
+              value="APPLE"
+              onChange={onCheckboxSelect}
+            />
             <label>APPLE</label>
           </div>
         </div>
       </div>
-      
+
       {/* TOTAL PRICE */}
       <div className="input_feld">
         <div className="price_min">
@@ -143,7 +154,7 @@ console.log(watches)
         </div>
       </div>
 
-        {/* WATCHES */}
+      {/* WATCHES */}
 
       <div className="watches">
         {filteredWatches.map((watch) => (
